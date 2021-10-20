@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= typeof title == "undefined" ? "Home" : title %></title>
+
+        <link rel="stylesheet" href="<%= request.mainURL %>/public/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="<%= request.mainURL %>/public/font-awesome-4.7.0/css/font-awesome.min.css" />
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <input type="hidden" id="base-url" value="<%= request.mainURL %>" />
+
+        <!-- top nav bar -->
+        
+        </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <header class="text-gray-600 body-font">
+                <div class="container mx-auto flex flex-wrap  flex-col md:flex-row items-center">
+                    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2"
+                            class="w-10 h-10 text-white p-2 bg-pink-500 rounded-full" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                     
+                        <a class="navbar-brand" href="<%= request.mainURL %>">VShare</a>
+                    </a>
+                </div>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<%= request.mainURL %>">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= request.mainURL %>/MyUploads">My Uploads</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= request.mainURL %>/MySharedLinks">My shared links</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= request.mainURL %>/allUpload">All Links</a>
+                    </li>
+
+                    <% if (request.isLogin) { %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%= request.session.user.name %>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item bg-pink-500 "  href="<%= request.mainURL %>/Logout">Log out</a>
+                            </div>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<%= request.mainURL %>/Login">Login</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="<%= request.mainURL %>/Register">Register</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
